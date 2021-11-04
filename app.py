@@ -84,7 +84,7 @@ c1,c2,c3 = st.columns([2,12,2])
 c2.write("<h1 style='color:#F9B0D0;'>INTEREST CALCULATOR</h1>",unsafe_allow_html=True)
 # st.markdown('www.bog.gov.org')
 
-what_to_cal = st.selectbox("What do you want to calculate", [ 'Future Value', 'Present Value', 'Interest Rate', 'Years'])
+what_to_cal = st.selectbox("What do you want to calculate", [ 'Future Value', 'Present Value', 'Interest Rate', 'Terms(Periods)'])
 
 
 
