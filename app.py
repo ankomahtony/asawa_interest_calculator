@@ -69,12 +69,14 @@ value6 = float(tb6[9])
 # st.write(tb2)
 # st.write(date1)
 
-col1, col2, col3, col4 = st.columns([2,3,3,3])
-col1.write(f'<span style="color:#82E0AA;"> {date1}</span>', unsafe_allow_html=True)
-col1.write('<h3 style="color:#F8C471;">Ghana<h3>', unsafe_allow_html=True)
-col2.metric(name1, f'{round(value1,2)} %',round(value1-value4,2))
-col3.metric(name2, f'{round(value2,2)} %',round(value2-value5,2))
-col4.metric(name3, f'{round(value3,2)} %',round(value3-value6,2))
+
+with st.expander("See Current Ghana Treasury Bill Interest Rate"):
+    col1, col2, col3, col4 = st.columns([2,3,3,3])
+    col1.write(f'<span style="color:#82E0AA;"> {date1}</span>', unsafe_allow_html=True)
+    col1.write('<h3 style="color:#F8C471;">Ghana<h3>', unsafe_allow_html=True)
+    col2.metric(name1, f'{round(value1,2)} %',round(value1-value4,2))
+    col3.metric(name2, f'{round(value2,2)} %',round(value2-value5,2))
+    col4.metric(name3, f'{round(value3,2)} %',round(value3-value6,2))
 
 st.caption(f'Source: {url}')
 
