@@ -124,7 +124,7 @@ if what_to_cal == 'Present Value':
     st.write(f'<span style="font-size:20pt; color:#82E0AA;">Present Value: {round(APV(st.session_state.future_value, type, interest, year+month/12),2)}</span>', unsafe_allow_html=True)
 
     chart_data = pd.DataFrame(
-        [APV(st.session_state.future_value, type, interest, i) for i in range(year+1)],
+        [APV(st.session_state.future_value, type, interest, i) for i in range(year,-1,-1)],
         columns=['Values'])
     
     if st.checkbox('Show Graph'):
