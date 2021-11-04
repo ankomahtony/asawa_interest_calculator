@@ -86,14 +86,23 @@ c2.write("<h1 style='color:#F9B0D0;'>INTEREST CALCULATOR</h1>",unsafe_allow_html
 
 what_to_cal = st.selectbox("What do you want to calculate", [ 'Future Value', 'Present Value', 'Interest Rate', 'Years'])
 
-left_column, right_column,  = st.columns([5,1])
-# st.markdown("""<hr style="height:2px;color:#333;background-color:#999;" /> """, unsafe_allow_html=True)
-if what_to_cal != 'Interest Rate':
-    interest = left_column.slider('Interest Rate:', 0.00, 100.00, step=0.1)
-    with right_column:
-        st.metric('Interest Rate:',f'{interest} %')
 
+
+left_column1, right_column1,  = st.columns([4,1])
 # st.markdown("""<hr style="height:2px;color:#333;background-color:#999;" /> """, unsafe_allow_html=True)
+
+if what_to_cal != 'Present Value':
+    pv = left_column1.number_input('Present Value:', key='principal')
+    # right_column1.write("<br>", unsafe_allow_html=True)
+
+if what_to_cal != 'Future Value':
+    fv = left_column1.number_input('Future Value:', key='future_value')
+
+# st.markdown("""<hr style="height:1px;color:#333;background-color:#999;" /> """, unsafe_allow_html=True)
+
+type = left_column1.selectbox('Interest Method:', ['Compound', 'Simple'])
+
+left_column, right_column,  = st.columns([4,1])
 if what_to_cal != 'Years':
     year = left_column.slider('Years:')
     month = left_column.slider('Month:', min_value=0, max_value=12)
@@ -101,18 +110,17 @@ if what_to_cal != 'Years':
     right_column.metric('Year: ', year)
     right_column.metric('Month: ', month)
 
-if what_to_cal != 'Present Value':
-    pv = st.number_input('Present Value:', key='principal')
 
-if what_to_cal != 'Future Value':
-    fv = st.number_input('Future Value:', key='future_value')
+# st.markdown("""<hr style="height:2px;color:#333;background-color:#999;" /> """, unsafe_allow_html=True)
+if what_to_cal != 'Interest Rate':
+    interest = left_column.slider('Interest Rate:', 0.00, 100.00, step=0.1)
+    with right_column:
+        st.metric('Interest Rate:',f'{interest} %')
 
-# st.markdown("""<hr style="height:1px;color:#333;background-color:#999;" /> """, unsafe_allow_html=True)
 
-type = st.selectbox('Interest Method:', ['Compound', 'Simple'])
 
 if what_to_cal == 'Present Value':
-    st.write('Present Value:', round(APV(st.session_state.future_value, type, interest, year+month/12),2))
+    st.write(f'<span style="font-size:20pt; color:#82E0AA;">Present Value: {round(APV(st.session_state.future_value, type, interest, year+month/12),2)}</span>', unsafe_allow_html=True)
 
     chart_data = pd.DataFrame(
         [APV(st.session_state.future_value, type, interest, i) for i in range(year+1)],
@@ -122,7 +130,7 @@ if what_to_cal == 'Present Value':
         st.area_chart(chart_data)
 
 elif what_to_cal == 'Future Value':
-    st.write('Future Value:', round(AFV(st.session_state.principal, type, interest, year+month/12),2))
+    st.write(f'<span style="font-size:20pt; color:#F8C471;">Future Value: {round(AFV(st.session_state.principal, type, interest, year+month/12),2)}</span>', unsafe_allow_html=True)
 
     year_index = [y for y in range(year+1)]
     chart_data = pd.DataFrame({
@@ -132,7 +140,7 @@ elif what_to_cal == 'Future Value':
         st.area_chart(chart_data)
 
 elif what_to_cal == 'Interest Rate' and pv > 0:
-    st.write('Interest Rate:', round(interestRate(pv, fv, type, year+month/12) * 100, 2), '%')
+    st.metric('Interest Rate:', f'{round(interestRate(pv, fv, type, year+month/12) * 100, 2)} %')
 
 elif what_to_cal == 'Years' and pv > 0 and interest != 0:
     year = yearsExpected(pv, fv, type, interest / 100)
