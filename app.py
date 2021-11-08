@@ -6,6 +6,7 @@ import math
 from bs4 import BeautifulSoup
 import requests
 
+
 url = "https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/"
 
 # @st.cache
@@ -104,7 +105,7 @@ if what_to_cal != 'Future Value':
 type = left_column1.selectbox('Interest Method:', ['Compound', 'Simple'])
 
 left_column, right_column,  = st.columns([4,1])
-if what_to_cal != 'Years':
+if what_to_cal != 'Terms(Periods)':
     year = left_column.slider('Years:')
     month = left_column.slider('Month:', min_value=0, max_value=12)
     
@@ -125,7 +126,7 @@ if what_to_cal == 'Present Value':
 
     chart_data = pd.DataFrame(
         [APV(st.session_state.future_value, type, interest, i) for i in range(year,-1,-1)],
-        columns=['Values'])
+        columns=['Amount'])
     
     if st.checkbox('Show Graph'):
         st.area_chart(chart_data)
@@ -135,7 +136,7 @@ elif what_to_cal == 'Future Value':
 
     year_index = [y for y in range(year+1)]
     chart_data = pd.DataFrame({
-        'Year':[AFV(st.session_state.principal, type, interest, i) for i in year_index]}, index=year_index)
+        'Amount':[AFV(st.session_state.principal, type, interest, i) for i in year_index]}, index=year_index)
 
     if st.checkbox('Show Graph'):
         st.area_chart(chart_data)
@@ -143,10 +144,15 @@ elif what_to_cal == 'Future Value':
 elif what_to_cal == 'Interest Rate' and pv > 0:
     st.metric('Interest Rate:', f'{round(interestRate(pv, fv, type, year+month/12) * 100, 2)} %')
 
-elif what_to_cal == 'Years' and pv > 0 and interest != 0:
+elif what_to_cal == 'Terms(Periods)' and pv > 0 and interest != 0:
     year = yearsExpected(pv, fv, type, interest / 100)
     month = math.ceil((year - math.floor(year)) * 12)
     if month == 12:
         month = 0
         year += 1
     st.write('Terms:', math.floor(year),'years ',month, 'months')
+
+
+
+# with st.echo():
+#     st.write("I am trying it here")
