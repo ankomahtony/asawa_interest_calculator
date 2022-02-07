@@ -7,13 +7,13 @@ from bs4 import BeautifulSoup
 import requests
 
 
-url = "https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/"
+# url = "https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/"
 
 # @st.cache
-def get_data(url):
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, "html.parser")
-    return soup
+# def get_data(url):
+#     page = requests.get(url)
+#     soup = BeautifulSoup(page.content, "html.parser")
+#     return soup
 # rows = soup.findAll('tr')
 
 
@@ -22,65 +22,65 @@ def get_data(url):
 # st.write(date1)
 
 
-if st.checkbox("See Current Ghana Treasury Bill Interest Rate"):
-    soup = get_data(url)
-    data = soup.findAll('tr')
-    data1 = soup.findAll("tr", {"id": "table_2_row_0"})
-    data2 = soup.findAll("tr", {"id": "table_2_row_1"})
-    data3 = soup.findAll("tr", {"id": "table_2_row_2"})
-    data4 = soup.findAll("tr", {"id": "table_2_row_3"})
-    data5 = soup.findAll("tr", {"id": "table_2_row_4"})
-    data6 = soup.findAll("tr", {"id": "table_2_row_5"})
+# if st.checkbox("See Current Ghana Treasury Bill Interest Rate"):
+#     soup = get_data(url)
+#     data = soup.findAll('tr')
+#     data1 = soup.findAll("tr", {"id": "table_2_row_0"})
+#     data2 = soup.findAll("tr", {"id": "table_2_row_1"})
+#     data3 = soup.findAll("tr", {"id": "table_2_row_2"})
+#     data4 = soup.findAll("tr", {"id": "table_2_row_3"})
+#     data5 = soup.findAll("tr", {"id": "table_2_row_4"})
+#     data6 = soup.findAll("tr", {"id": "table_2_row_5"})
 
-    tb1 = []
-    tb2 = []
-    tb3 = []
-    tb4 = []
-    tb5 = []
-    tb6 = []
+#     tb1 = []
+#     tb2 = []
+#     tb3 = []
+#     tb4 = []
+#     tb5 = []
+#     tb6 = []
 
-    for dd in data1[0]:
-        tb1.append(dd.text)
+#     for dd in data1[0]:
+#         tb1.append(dd.text)
 
-    for dd in data2[0]:
-        tb2.append(dd.text)
+#     for dd in data2[0]:
+#         tb2.append(dd.text)
 
-    for dd in data3[0]:
-        tb3.append(dd.text)
-
-
-    for dd in data4[0]:
-        tb4.append(dd.text)
+#     for dd in data3[0]:
+#         tb3.append(dd.text)
 
 
-    for dd in data5[0]:
-        tb5.append(dd.text)
+#     for dd in data4[0]:
+#         tb4.append(dd.text)
 
 
-    for dd in data6[0]:
-        tb6.append(dd.text)
+#     for dd in data5[0]:
+#         tb5.append(dd.text)
 
 
-    date1 = tb1[1]
-    name1 = tb1[5]
-    value1 = float(tb1[9])
+#     for dd in data6[0]:
+#         tb6.append(dd.text)
 
-    name2 = tb2[5]
-    value2 = float(tb2[9])
 
-    name3 = tb3[5]
-    value3 = float(tb3[9])
-    value4 = float(tb4[9])
-    value5 = float(tb5[9])
-    value6 = float(tb6[9])
-    col1, col2, col3, col4 = st.columns([2,3,3,3])
-    col1.write(f'<span style="color:#82E0AA;"> {date1}</span>', unsafe_allow_html=True)
-    col1.write('<h3 style="color:#F8C471;">Ghana<h3>', unsafe_allow_html=True)
-    col2.metric(name1, f'{round(value1,2)} %',round(value1-value4,2))
-    col3.metric(name2, f'{round(value2,2)} %',round(value2-value5,2))
-    col4.metric(name3, f'{round(value3,2)} %',round(value3-value6,2))
+#     date1 = tb1[1]
+#     name1 = tb1[5]
+#     value1 = float(tb1[9])
 
-    st.caption(f'Source: {url}')
+#     name2 = tb2[5]
+#     value2 = float(tb2[9])
+
+#     name3 = tb3[5]
+#     value3 = float(tb3[9])
+#     value4 = float(tb4[9])
+#     value5 = float(tb5[9])
+#     value6 = float(tb6[9])
+#     col1, col2, col3, col4 = st.columns([2,3,3,3])
+#     col1.write(f'<span style="color:#82E0AA;"> {date1}</span>', unsafe_allow_html=True)
+#     col1.write('<h3 style="color:#F8C471;">Ghana<h3>', unsafe_allow_html=True)
+#     col2.metric(name1, f'{round(value1,2)} %',round(value1-value4,2))
+#     col3.metric(name2, f'{round(value2,2)} %',round(value2-value5,2))
+#     col4.metric(name3, f'{round(value3,2)} %',round(value3-value6,2))
+
+#     st.caption(f'Source: {url}')
 
 c1,c2,c3 = st.columns([2,12,2])
 c2.write("<h1 style='color:#F9B0D0;'>INTEREST CALCULATOR</h1>",unsafe_allow_html=True)
