@@ -2,6 +2,7 @@
 # CS50 Final Project - Interest Calculator
 #### Video Demo:  https://youtu.be/LRTGpONtfiA
 
+#### Description:
 The project is a streamlit web app that helps in calculating interest(both compound and simple), present value, future value or its period.
 The app is currently deployed in the streamlit free cloud.Streamlit turns data scripts into shareable web apps in minutes. All in pure Python. No front‑end experience required
 
@@ -10,7 +11,7 @@ Technologies used:
 - Python
 - Streamlit frameword
 
-`Streamlit is an open source app framework for Machine learning and Data Science projects.` 
+`Streamlit is an open source app framework for Machine learning and Data Science projects.`
 
 ## How the webpage works?
 The app is very simple, it requires no signing up. User just need to choose what to calculate first. that is either:
@@ -35,6 +36,39 @@ This calculation is somethings needed in  discount loans.
 [^3]: Interest rate. Here, you have a value and expecting some future value however you don't know an interest appropriate given some period.
 [^4]: Finally, you may have the present value and your expected future value with the interest rate but you don't know how long you should allow to yeild that value in future.
 
+#### the function.py file
+This contains all the functions used in calculating the future values, present values, interest rate and the period. It is done seperately to make the codes organised and clean.
+
+#### The uses for Calculating:
+
+Usage:
+Calculating Future Value:
+1. You will have to select from "What do you want to calculate" option:
+![](images/2.png)
+
+2. then enter the current/ present value
+![](images/3.png)
+
+3. Select whether compound or simple interest
+![](images/5.png)
+
+4. Provide the values for interest and the terms or period as shown below:
+![](images/6.png)
+
+
+Calculating Present Value:
+1. You will have to select from "What do you want to calculate" option as below:
+![](images/1.png)
+2. then enter the current/ Future value
+![](images/2.png)
+
+3. Select whether compound or simple interest
+![](images/5.png)
+
+4. Provide the values for interest and the terms or period as shown below:
+![](images/6.png)
+
+Similar for the other calculations.
 
 ### Routing
 
@@ -52,6 +86,7 @@ No database Required
 As all applications this one can also be improved. Possible improvements:
 
 - Adding Amortization to it to handle loan management
+
 
 ## How to launch application
 
