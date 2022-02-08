@@ -7,11 +7,11 @@ The uses for Calculating:
 3. Interest Rate[^3]
 4. Terms(Periods)[^4]
 
-5. [^1]: Future Value is a value an investor expected given a current value, interest rate and period(in years or month  or both).
-6. [^2]: Present value is a value an investor needed current to acheive a target future value, interest rate and period(in years or month  or both).
-7. This calculation is somethings needed in  discount loans.
-7. [^3]: Interest rate. Here, you have a value and expecting some future value however you don't know an interest appropriate given some period.
-8. [^4]: Finally, you may have the present value and your expected future value with the interest rate but you don't know how long you should allow to yeild that value in future.
+[^1]: Future Value is a value an investor expected given a current value, interest rate and period(in years or month  or both).
+[^2]: Present value is a value an investor needed current to acheive a target future value, interest rate and period(in years or month  or both).
+This calculation is somethings needed in  discount loans.
+[^3]: Interest rate. Here, you have a value and expecting some future value however you don't know an interest appropriate given some period.
+[^4]: Finally, you may have the present value and your expected future value with the interest rate but you don't know how long you should allow to yeild that value in future.
 
 
 Usage:
