@@ -14,3 +14,15 @@
 [^4]: Finally, you may have the present value and your expected future value with the interest rate but you don't know how long you should allow to yeild that value in future.
 
 
+
+## Usage:
+Calculating Future Value:
+You will have to select from "What do you want to calculate" option as below:
+![](images/2.png)
+
+
+Calculating Present Value:
+You will have to select from "What do you want to calculate" option as below:
+![](images/1.png)
+
+Both you will provide the other information
